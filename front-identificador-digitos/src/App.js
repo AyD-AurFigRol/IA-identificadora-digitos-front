@@ -4,7 +4,14 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Esto es el header de la que deberia ser la landing, meterle react router para mandar a la landing de verdad</p>
+        <div className="Header-izq">
+          <div className="Header-logo"> LOGO </div>
+        </div> 
+        <div className="Header-der">
+          <div className="Header-btn"> Exercises </div>
+          <div className="Header-btn">About us</div>
+          <div className="Header-btn">{/* Aqui meter unos botones para meter lo del link de reat */} Log In</div>
+        </div>
       </header>
       <div className = "container">
         <p>Primer texto de esta aplicacion</p>
