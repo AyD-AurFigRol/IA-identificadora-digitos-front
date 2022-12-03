@@ -1,0 +1,46 @@
+  .land {
+    width: 100%;    
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: ;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(to bottom, #4391b6, #70afce, #a5def1);
+    align-items: center;
+    overflow-y: auto;
+  }
+  .cont-a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cont-b {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 10px;
+  }
+  
+  .info, .quest, .ans {
+    display: flex;
+    height: max-content;
+    width: 75%;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+  }
+  
+  .quest, .ans {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xx-large;
+  }
+  
