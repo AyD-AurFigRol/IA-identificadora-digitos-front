@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: scroll;
   }
 
   .container {
@@ -14,6 +14,8 @@
     background: linear-gradient(to bottom, #4391b6, #70afce, #a5def1);
     align-items: center;
     overflow-y: auto;
+    padding-top: 200px;
+    gap: 90px
   }
   .cont-a {
     display: flex;
@@ -25,14 +27,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
     margin-top: 10px;
+    gap: 40px;
   }
   
   .info, .quest, .ans {
     display: flex;
-    height: max-content;
-    width: 75%;
+    height: auto;
+    width: 80%;
     align-items: center;
     justify-content: center;
     font-size: xx-large; 
