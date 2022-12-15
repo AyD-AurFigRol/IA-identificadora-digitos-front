@@ -1,7 +1,11 @@
+import Form from "./Form";
+import Header from "./Header"
+
 export default function Login() {
     return(
-        <>
-            <p> Login</p>
+        <>            
+            <Header />
+            <Form />
         </>
     );
 }
