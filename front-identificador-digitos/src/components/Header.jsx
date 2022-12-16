@@ -6,7 +6,7 @@ export default function Header() {
         <>
             <header className="App-header">
                 <div className="Header-izq">
-                    <div className="Header-logo"> Skynet </div>
+                    <Link to={`/`}><div className="Header-logo"> Skynet </div></Link>
                 </div>
                 <div className="Header-der">
                     <div className="Header-text"> <Link to={`/exer`}> Exercises</Link> </div>

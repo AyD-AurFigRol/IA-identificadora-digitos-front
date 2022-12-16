@@ -1,20 +1,58 @@
 .form {
     height: 400px;
-    width: 400px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    background-color: rgb(111, 194, 194);
+    gap: 30px;    
+    background-color: #FDAF75;    
+    border-radius: 15px;
+    margin-top: 100px;
 }
 
 input {
-    width: 185px;
-    height: 30px;
+    width: 245px;
+    height: 35px;
+    border-radius: 7px;
+    border: none;
+    padding-left: 10px;
+}
+
+::placeholder {
+    font-style: oblique;
+    color: #262d69;
 }
 
 button {
-    width: 150px;
-    height: 30px;
+    width: 110px;
+    height: 45px;
+    background-color: #262d69;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 12px;
+    border: none;
+}
+
+p {
+    height: auto;
+    align-self: start;
+    margin-left: 20px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+label {
+    height: 15px;
+    align-self: start;
+    color: rgb(43, 41, 41);
+    font-size: 12.5px;
+}
+.div-input {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
 }

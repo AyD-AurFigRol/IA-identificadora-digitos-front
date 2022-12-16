@@ -33,9 +33,9 @@ class Form extends React.Component {
     render() {
         const qld = (new URLSearchParams(window.location.search).get("val") == "true") ? true : false;
         const loginDiv = <div className="form" >
-            Ingrese al sistema
-            <label for="Name">Nombre de usuario </label><input name="Name" id="Name" type="text" placeholder="Ingrese su usuario" />
-            <label for="pass">Contrasena del usuario </label><input name="pass" id="pass" type="password" placeholder="Ingrese su contrasena" />
+            <p>Login</p>
+            <div className="div-input"><label for="Name">Usuario: </label><input required name="Name" id="Name" type="text" placeholder="Ingrese su usuario" /></div>
+            <div className="div-input"><label for="pass">Contraseña: </label><input required name="pass" id="pass" type="password" placeholder="Ingrese su contraseña" /></div>
             <button onClick={() => this.validar(document.getElementById("Name").value, document.getElementById("pass").value)}> Enviar </button>
         </div>
 

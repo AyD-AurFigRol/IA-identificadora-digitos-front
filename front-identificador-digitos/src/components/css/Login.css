@@ -3,4 +3,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to bottom, #4391b6, rgb(23, 180, 207));
 }
