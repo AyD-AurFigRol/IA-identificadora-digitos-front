@@ -4,7 +4,7 @@ export default function Exercises () {
     return (
         <>
             <Header />
-            Mamadas de los ejercicios
+            Ejercicios
         </>
     )
 }
