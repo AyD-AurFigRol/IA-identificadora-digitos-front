@@ -8,8 +8,7 @@ export default function Header() {
                 <div className="Header-izq">
                     <Link to={`/`}><div className="Header-logo"> Skynet </div></Link>
                 </div>
-                <div className="Header-der">
-                    <div className="Header-text"> <Link to={`/exer`}> Exercises</Link> </div>
+                <div className="Header-der">                    
                     <div className="Header-text"><Link to={`/us`}>About us</Link></div>
                     <div className="Header-text"> <Link to={`/login`}>Sign in</Link></div>
                     <div className="Header-btn"> <Link to={`/register`}> Sign up</Link></div>

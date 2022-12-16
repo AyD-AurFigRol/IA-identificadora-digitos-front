@@ -5,6 +5,7 @@ import React from 'react';
 
 class Form extends React.Component {
 
+    
     state = {
         val: false
     }
@@ -21,12 +22,15 @@ class Form extends React.Component {
             User: usuario,
             pass: password
         }
-        $.post("api/servletLogin", datos, (resultado) => {
+        $.post("http://localhost:8080/login/api/servletLogin", datos, (resultado) => {
             if (resultado.success) {
                 this.state.val = true;
                 this.forceUpdate();
-            } else
+            } else {
                 alert("Usuario no registrado");
+                $("#Name").val("");
+                $("#pass").val("");
+            }         
         })
     }
 
