@@ -2,6 +2,8 @@ import './css/Form.css'
 import $ from "jquery"
 import Exercises from "./Exercises"
 import React from 'react';
+import { Navigate } from 'react-router-dom';
+
 
 class Form extends React.Component {
 
@@ -34,6 +36,8 @@ class Form extends React.Component {
         })
     }
 
+    //<Exercises /> : loginDiv;
+
     render() {
         const qld = (new URLSearchParams(window.location.search).get("val") == "true") ? true : false;
         const loginDiv = <div className="form" >
@@ -43,7 +47,8 @@ class Form extends React.Component {
             <button onClick={() => this.validar(document.getElementById("Name").value, document.getElementById("pass").value)}> Enviar </button>
         </div>
 
-        const esValido = (this.state.val) || qld ? <Exercises /> : loginDiv;
+        const esValido = (this.state.val) || qld ? <Navigate to= "/exer"/> : loginDiv;       
+        
 
         return (
             <div>
