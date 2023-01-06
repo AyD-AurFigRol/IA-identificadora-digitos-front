@@ -1,7 +1,8 @@
 import Header from "./Header"
 import React from "react";
+import { Link } from "react-router-dom"
 import axios from "axios";
-
+import Exercise from "./Exercise"
 
 class Exercises extends React.Component { 
 
@@ -23,36 +24,38 @@ class Exercises extends React.Component {
     render() {
         const { data, showAlert, alertText } = this.state;
         return (
-            <Header />
-            <Container className="MarginContainer" >
-                <h1 className="AlignCenter" > CREAR, ALTAS, BAJAS Y CAMBIOS </h1>
-                <hr style={{ width: "80%" }} />
-                {
-                    showAlert ?
-                        <Alert variant="danger">
-                            {alertText}
-                        </Alert>
-                        : null
-                }
-                <Button variant="info" style={{ margin: "12px" }}>
-                    <Link to="/Crud_React/formulario" className="CustomLink">Añadir nueva pregunta</Link>
-                </Button>
-                <Table striped bordered >
-                    <thead>
-                        <tr>
-                            <th>Pregunta</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            data.map(pregunta => {  /*data es un arreglo y map es una funcion para recorrer el arreglo*/
-                                return <Pregunta {...pregunta} />
-                            })
-                        }
-                    </tbody>
-                </Table>
-            </Container>
+            <>
+                <Header />
+                <div className="MarginContainer" >
+                    <h1 className="AlignCenter" > CREAR, ALTAS, BAJAS Y CAMBIOS </h1>
+                    <hr style={{ width: "80%" }} />
+                    {
+                        showAlert ?
+                            <alert variant="danger">
+                                {alertText}
+                            </alert>
+                            : null
+                    }
+                    <button variant="info" style={{ margin: "12px" }}>
+                        <Link to="/Crud_React/formulario" className="CustomLink">Añadir nueva pregunta</Link>
+                    </button>
+                    <table striped bordered >
+                        <thead>
+                            <tr>
+                                <th>Pregunta</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                data.map(pregunta => {  /*data es un arreglo y map es una funcion para recorrer el arreglo*/
+                                    return <Exercise {...pregunta} />
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </>
         )
     }
 }
