@@ -1,8 +1,9 @@
-import Header from "./Header"
+import Header from "./Header";
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Exercise from "./Exercise"
+import Exercise from "./Exercise";
+import "./css/Exercises.css"
 
 class Exercises extends React.Component { 
 
@@ -13,7 +14,18 @@ class Exercises extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("Ejercicios").then(response => {
+        const data = new URLSearchParams();
+        data.append('numero', '1');
+        data.append('opcion', 'consulta');
+        axios.post(
+            "/login/api/ejercicios",
+            data.toString(),
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+        ).then(response => {
             this.setState({ data: response.data });
         }).catch(error => {
             console.info(error);
@@ -28,7 +40,6 @@ class Exercises extends React.Component {
                 <Header />
                 <div className="MarginContainer" >
                     <h1 className="AlignCenter" > CREAR, ALTAS, BAJAS Y CAMBIOS </h1>
-                    <hr style={{ width: "80%" }} />
                     {
                         showAlert ?
                             <alert variant="danger">
@@ -36,9 +47,10 @@ class Exercises extends React.Component {
                             </alert>
                             : null
                     }
-                    <button variant="info" style={{ margin: "12px" }}>
-                        <Link to="/Crud_React/formulario" className="CustomLink">Añadir nuevo ejercicio</Link>
+                    <button className="nuevoEjercicio" style={{ margin: "12px" }}>
+                        <Link to="/formulario">Añadir nuevo ejercicio</Link>
                     </button>
+
                     <table striped bordered >
                         <thead>
                             <tr>

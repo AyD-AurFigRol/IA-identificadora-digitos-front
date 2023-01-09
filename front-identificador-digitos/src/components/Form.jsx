@@ -24,7 +24,7 @@ class Form extends React.Component {
             User: usuario,
             pass: password
         }
-        $.post("http://localhost:8080/login/api/servletLogin", datos, (resultado) => {
+        $.post("/login/api/servletLogin", datos, (resultado) => {
             if (resultado.success) {
                 this.state.val = true;
                 this.forceUpdate();
