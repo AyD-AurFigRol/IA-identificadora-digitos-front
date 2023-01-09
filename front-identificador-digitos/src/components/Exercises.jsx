@@ -37,19 +37,19 @@ class Exercises extends React.Component {
                             : null
                     }
                     <button variant="info" style={{ margin: "12px" }}>
-                        <Link to="/Crud_React/formulario" className="CustomLink">Añadir nueva pregunta</Link>
+                        <Link to="/Crud_React/formulario" className="CustomLink">Añadir nuevo ejercicio</Link>
                     </button>
                     <table striped bordered >
                         <thead>
                             <tr>
-                                <th>Pregunta</th>
+                                <th>Ejercicio</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                data.map(pregunta => {  /*data es un arreglo y map es una funcion para recorrer el arreglo*/
-                                    return <Exercise {...pregunta} />
+                                data.map(ejercicio => {  /*data es un arreglo y map es una funcion para recorrer el arreglo*/
+                                    return <Exercise {...ejercicio} />
                                 })
                             }
                         </tbody>
