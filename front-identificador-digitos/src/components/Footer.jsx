@@ -12,7 +12,7 @@ export default function Footer() {
                 Rolón Cárdenas Roberto
                 2021630589,
                 Grupo: 5CM5,
-                Tarea: Tarea 1 Login 
+                Tarea: Tarea 2 CRUD 
             </p>
         </div>
 
