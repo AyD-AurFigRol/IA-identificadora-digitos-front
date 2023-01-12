@@ -47,7 +47,7 @@ module.exports = (env) => {
             hot: true,
             open: true,
             proxy: {
-                '/login': {
+                '/skynet': {
                     target: 'http://localhost:3000',
                     router: () => 'http://localhost:8080',
                     secure: false

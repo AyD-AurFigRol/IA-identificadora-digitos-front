@@ -17,7 +17,7 @@ class Exercises extends React.Component {
     componentDidMount() {
         const data = new URLSearchParams();
         data.append('numero', '1');
-        data.append('opc', '2');
+        data.append('opcion', '2');
         const datos = {
             numero: "1",
             //numero: 1 probar con este tambien en caso de que el $ no jale
@@ -25,7 +25,7 @@ class Exercises extends React.Component {
             //opcion: 2 probar con este tambien en caso de que el $ no jale
         }
 /* No lo terminé, primero probar con el axios
-        $.post("/login/api/ejercicios", datos, (resultado) => {
+        $.post("/skynet/api/ejercicios", datos, (resultado) => {
             if (resultado.success) {
                 this.setState({ data: resultado.num })
                 this.forceUpdate();
@@ -35,8 +35,8 @@ class Exercises extends React.Component {
         }) */
 
         axios.post(
-            "/login/api/ejercicios",
-            data.toString(),
+            "/skynet/api/ejercicios",
+            data,
             {
                 headers: {
                     'Content-Type': 'application/json'
