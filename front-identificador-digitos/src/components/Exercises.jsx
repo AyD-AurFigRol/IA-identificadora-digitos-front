@@ -51,7 +51,7 @@ class Exercises extends React.Component {
                             </alert>
                             : null
                     }
-                    <button className="nuevoEjercicio" style={{ margin: "12px" }}>
+                    <button className="nuevoEjercicio" style={{ margin: "12px", color: "white"}}>
                         <Link to="/alta">Añadir nuevo ejercicio</Link>
                     </button>
 
@@ -65,6 +65,7 @@ class Exercises extends React.Component {
                         <tbody>
                             {                                
                                 data.map(ejercicio => {  /*data es un arreglo y map es una funcion para recorrer el arreglo*/
+                                    console.log(ejercicio);
                                     return <Exercise {...ejercicio} />
                                 })
                             }

@@ -10,10 +10,22 @@
       gap: 90px
     }
 
-    .nuevoEjercicio {
-        width: 250px;
+    button{
+        width: 150px;
         min-height: 40px;
         color: #F3E7E7;
-        background-color: #262669;
+        font-size: medium;
+    }
+
+    .ver {
+        background-color: #124E06;
+    }
+
+    .editar {        
+        background-color: #6C1F72;
+    }
+
+    .eliminar{
+        background-color: #951414;
     }
 }

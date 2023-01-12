@@ -1,9 +1,8 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Exercise = ({ id, pregunta }) => {
+const Exercise = ({ num, text }) => {
 
     const handleClickEliminar = (event) => {
         //Eliminar
@@ -21,31 +20,28 @@ const Exercise = ({ id, pregunta }) => {
             window.location.href = "/exer/";
         });
     }
-
+//, nombre: {num[3]} eso irá en el td cuando se arregle este pedo
     return (
         <tr>
-            <td>{pregunta}</td>
+            <td>{text}, id: {num[0]}</td> 
             <td className="AlignCenter">
-                <Button
-                    variant="success"
-                    className="M-6">
+                <button
+                    className="ver">
                     <Link to={`/exer/info?id=${id}`} className="CustomLink" >
                         Ver ejercicio
                     </Link>
-                </Button>
-                <Button
-                    variant="warning"
-                    className="M-6">
+                </button>
+                <button 
+                    className="editar">
                     <Link to={`/exer/formulario?id=${id}`} className="CustomLink" >
                         Editar ejercicio
                     </Link>
-                </Button>
-                <Button
-                    variant="danger"
-                    className="M-6"
+                </button>
+                <button
+                    className="eliminar"
                     onClick={handleClickEliminar}>
                     Eliminar ejercicio
-                </Button>
+                </button>
             </td>
         </tr>
     )
