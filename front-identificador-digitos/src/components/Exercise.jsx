@@ -7,7 +7,7 @@ const Exercise = ({ id, pregunta }) => {
 
     const handleClickEliminar = (event) => {
         //Eliminar
-        axios.post(`http://localhost:8080/Exer/Eliminar?id=${id}`).then(response => {
+        axios.post(`http://localhost:8080/Eliminar?id=${id}`).then(response => {
             console.info(response.data);
             if (response.data.message) {
                 alert(response.data.message);
@@ -18,7 +18,7 @@ const Exercise = ({ id, pregunta }) => {
             console.info(error);
             alert(response.data.message);
         }).finally(() => {
-            window.location.href = "/Exer/";
+            window.location.href = "/exer/";
         });
     }
 
@@ -29,14 +29,14 @@ const Exercise = ({ id, pregunta }) => {
                 <Button
                     variant="success"
                     className="M-6">
-                    <Link to={`/Exer/info?id=${id}`} className="CustomLink" >
+                    <Link to={`/exer/info?id=${id}`} className="CustomLink" >
                         Ver ejercicio
                     </Link>
                 </Button>
                 <Button
                     variant="warning"
                     className="M-6">
-                    <Link to={`/Exer/formulario?id=${id}`} className="CustomLink" >
+                    <Link to={`/exer/formulario?id=${id}`} className="CustomLink" >
                         Editar ejercicio
                     </Link>
                 </Button>

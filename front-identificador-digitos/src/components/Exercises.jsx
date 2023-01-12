@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Exercise from "./Exercise";
 import "./css/Exercises.css"
+import $ from "jquery"
 
 class Exercises extends React.Component { 
 
@@ -16,17 +17,35 @@ class Exercises extends React.Component {
     componentDidMount() {
         const data = new URLSearchParams();
         data.append('numero', '1');
-        data.append('opcion', 'consulta');
+        data.append('opc', '2');
+        const datos = {
+            numero: "1",
+            //numero: 1 probar con este tambien en caso de que el $ no jale
+            opcion: "2"
+            //opcion: 2 probar con este tambien en caso de que el $ no jale
+        }
+/* No lo terminé, primero probar con el axios
+        $.post("/login/api/ejercicios", datos, (resultado) => {
+            if (resultado.success) {
+                this.setState({ data: resultado.num })
+                this.forceUpdate();
+            } else {
+                alert("No se encontraron ejercicios");
+            }         
+        }) */
+
         axios.post(
             "/login/api/ejercicios",
             data.toString(),
             {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 }
             }
         ).then(response => {
             this.setState({ data: response.data });
+            console.log(response.data);
+            console.log(this.state.data);
         }).catch(error => {
             console.info(error);
             this.setState({ showAlert: true, alertText: "ERROR EN LA OBTENCION DE DATOS" });
@@ -48,7 +67,7 @@ class Exercises extends React.Component {
                             : null
                     }
                     <button className="nuevoEjercicio" style={{ margin: "12px" }}>
-                        <Link to="/formulario">Añadir nuevo ejercicio</Link>
+                        <Link to="/alta">Añadir nuevo ejercicio</Link>
                     </button>
 
                     <table striped bordered >
