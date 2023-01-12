@@ -15,29 +15,14 @@ class Exercises extends React.Component {
     }
 
     componentDidMount() {
-        // ! Convertir esto a JSON
-        const data = new URLSearchParams();
-        data.append('numero', '1');
-        data.append('opcion', '2');
         const datos = {
             numero: "1",
-            //numero: 1 probar con este tambien en caso de que el $ no jale
             opcion: "2"
-            //opcion: 2 probar con este tambien en caso de que el $ no jale
         }
-/* No lo terminé, primero probar con el axios
-        $.post("/skynet/api/ejercicios", datos, (resultado) => {
-            if (resultado.success) {
-                this.setState({ data: resultado.num })
-                this.forceUpdate();
-            } else {
-                alert("No se encontraron ejercicios");
-            }         
-        }) */
 
         axios.post(
             "/skynet/api/ejercicios",
-            data,
+            datos,
             {
                 headers: {
                     'Content-type': 'application/json'
@@ -50,36 +35,7 @@ class Exercises extends React.Component {
         }).catch(error => {
             console.info(error);
             this.setState({ showAlert: true, alertText: "ERROR EN LA OBTENCION DE DATOS" });
-        })  ;      
-        */
-       
-        axios.post(
-            "/skynet/api/ejercicios?opcion=2&numero=1").then(response => {
-            this.setState({ data: response.data });
-            console.log(response.data);
-            console.log(this.state.data);
-        }).catch(error => {
-            console.info(error);
-            this.setState({ showAlert: true, alertText: "ERROR EN LA OBTENCION DE DATOS" });
         });
-/*
-        axios.post(
-            "/skynet/api/ejercicios?opcion=2&numero=1",
-            {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }
-        ).then(response => {
-            this.setState({ data: response.data });
-            console.log(response.data);
-            console.log(this.state.data);
-        }).catch(error => {
-            console.info(error);
-            this.setState({ showAlert: true, alertText: "ERROR EN LA OBTENCION DE DATOS" });
-        });
-        */
-      
     }
 
     render() {
