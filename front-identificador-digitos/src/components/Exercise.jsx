@@ -5,10 +5,12 @@ import "./css/Exercise.css"
 
 const Exercise = ({ num, text }) => {
 
+    const id = num[0] // este va a ser el id
+
     const handleClickEliminar = (event) => {
         //Eliminar
         const datos = {
-            "numero": "1",
+            "numero": {id},
             "opcion": "3"
         }
 
@@ -37,13 +39,13 @@ const Exercise = ({ num, text }) => {
             <td className="derecha">
                 <button
                     className="ver">
-                    <Link to={`/exer/info`} className="CustomLink" >
+                    <Link to={`/exer/info`}  >
                         Ver ejercicio
                     </Link>
                 </button>
                 <button 
                     className="editar">
-                    <Link to={`/exer/formulario`} className="CustomLink" >
+                    <Link to={`/exer/formulario`} >
                         Editar ejercicio
                     </Link>
                 </button>
