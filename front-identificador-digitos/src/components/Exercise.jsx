@@ -38,7 +38,7 @@ const Exercise = ({ num, text }) => {
 //, nombre: {num[3]} eso irá en el td cuando se arregle lo de consulta general
     return (
         <tr>
-            <td>{text} , {num[0]}</td> 
+            <td>{text} , {num[0]}, {num}</td> 
             <td className="derecha">
                 <button
                     className="ver">
