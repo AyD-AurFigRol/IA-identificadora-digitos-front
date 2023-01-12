@@ -28,7 +28,7 @@ class Exercises extends React.Component {
                 }
             }
         ).then(response => {
-            this.setState({ data: response.data });
+            this.setState({ data: [response.data] });
             console.log(response.data);
             console.log(this.state.data);
         }).catch(error => {
@@ -63,7 +63,7 @@ class Exercises extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {
+                            {                                
                                 data.map(ejercicio => {  /*data es un arreglo y map es una funcion para recorrer el arreglo*/
                                     return <Exercise {...ejercicio} />
                                 })
