@@ -15,6 +15,7 @@ class Exercises extends React.Component {
     }
 
     componentDidMount() {
+        // ! Convertir esto a JSON
         const data = new URLSearchParams();
         data.append('numero', '1');
         data.append('opcion', '2');
@@ -34,12 +35,16 @@ class Exercises extends React.Component {
             }         
         }) */
 
+        let dataToSend = data;
+        //dataToSend = JSON.parse('{"numero":"1", "opcion":"2"}');
+        console.log(dataToSend);
+
         axios.post(
             "/skynet/api/ejercicios",
-            data,
+            {"numero":"1", "opcion":"2"},
             {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-type': 'application/json'
                 }
             }
         ).then(response => {
