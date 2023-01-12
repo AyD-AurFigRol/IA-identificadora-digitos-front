@@ -54,7 +54,36 @@ class Exercises extends React.Component {
         }).catch(error => {
             console.info(error);
             this.setState({ showAlert: true, alertText: "ERROR EN LA OBTENCION DE DATOS" });
-        })
+        })  ;      
+        */
+       
+        axios.post(
+            "/skynet/api/ejercicios?opcion=2&numero=1").then(response => {
+            this.setState({ data: response.data });
+            console.log(response.data);
+            console.log(this.state.data);
+        }).catch(error => {
+            console.info(error);
+            this.setState({ showAlert: true, alertText: "ERROR EN LA OBTENCION DE DATOS" });
+        });
+/*
+        axios.post(
+            "/skynet/api/ejercicios?opcion=2&numero=1",
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+        ).then(response => {
+            this.setState({ data: response.data });
+            console.log(response.data);
+            console.log(this.state.data);
+        }).catch(error => {
+            console.info(error);
+            this.setState({ showAlert: true, alertText: "ERROR EN LA OBTENCION DE DATOS" });
+        });
+        */
+      
     }
 
     render() {
