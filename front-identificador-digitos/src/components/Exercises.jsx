@@ -51,7 +51,7 @@ class Exercises extends React.Component {
                             </alert>
                             : null
                     }
-                    <button className="nuevoEjercicio" style={{ margin: "12px", color: "white"}}>
+                    <button className="nuevoEjercicio" style={{ margin: "12px"}}>
                         <Link to="/alta">Añadir nuevo ejercicio</Link>
                     </button>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./css/Exercise.css"
 
 const Exercise = ({ num, text }) => {
 
@@ -33,7 +34,7 @@ const Exercise = ({ num, text }) => {
     return (
         <tr>
             <td>{text}"," {num[0]}</td> 
-            <td className="AlignCenter">
+            <td className="derecha">
                 <button
                     className="ver">
                     <Link to={`/exer/info`} className="CustomLink" >
