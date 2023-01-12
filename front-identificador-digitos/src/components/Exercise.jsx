@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./css/Exercise.css"
 
 const Exercise = ({ num, text }) => {
 
     const id = num[0] // este va a ser el id
+    console.log(id);
+    console.log(num[0]);
 
     const handleClickEliminar = (event) => {
         //Eliminar
@@ -29,23 +31,24 @@ const Exercise = ({ num, text }) => {
             console.info(error);
             alert(response.data.message);
         }).finally(() => {
-            window.location.href = "/exer/";
+            window.location.href = "/exer";
+            //<Navigate to= "/exer"/>
         });
     }
 //, nombre: {num[3]} eso irá en el td cuando se arregle lo de consulta general
     return (
         <tr>
-            <td>{text}"," {num[0]}</td> 
+            <td>{text} , {num[0]}</td> 
             <td className="derecha">
                 <button
                     className="ver">
-                    <Link to={`/exer/info`}  >
+                    <Link to={`/exer/info`} className="link" >
                         Ver ejercicio
                     </Link>
                 </button>
                 <button 
                     className="editar">
-                    <Link to={`/exer/formulario`} >
+                    <Link to={`/exer/formulario`} className="link">
                         Editar ejercicio
                     </Link>
                 </button>
