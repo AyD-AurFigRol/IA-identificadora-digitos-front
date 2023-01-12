@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Exercise from "./Exercise";
 import "./css/Exercises.css"
-import $ from "jquery"
 
 class Exercises extends React.Component { 
 
@@ -16,8 +15,8 @@ class Exercises extends React.Component {
 
     componentDidMount() {
         const datos = {
-            numero: "1",
-            opcion: "2"
+            "numero": "1",
+            "opcion": "2"
         }
 
         axios.post(
