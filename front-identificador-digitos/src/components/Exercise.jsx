@@ -6,7 +6,16 @@ const Exercise = ({ num, text }) => {
 
     const handleClickEliminar = (event) => {
         //Eliminar
-        axios.post(`http://localhost:8080/Eliminar?id=${id}`).then(response => {
+        const datos = {
+            "numero": "1",
+            "opcion": "3"
+        }
+
+        axios.post(`/skynet/api/ejercicios`, datos,  {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }).then(response => {
             console.info(response.data);
             if (response.data.message) {
                 alert(response.data.message);
@@ -20,20 +29,20 @@ const Exercise = ({ num, text }) => {
             window.location.href = "/exer/";
         });
     }
-//, nombre: {num[3]} eso irá en el td cuando se arregle este pedo
+//, nombre: {num[3]} eso irá en el td cuando se arregle lo de consulta general
     return (
         <tr>
-            <td>{text}, id: {num[0]}</td> 
+            <td>{text}"," {num[0]}</td> 
             <td className="AlignCenter">
                 <button
                     className="ver">
-                    <Link to={`/exer/info?id=${id}`} className="CustomLink" >
+                    <Link to={`/exer/info`} className="CustomLink" >
                         Ver ejercicio
                     </Link>
                 </button>
                 <button 
                     className="editar">
-                    <Link to={`/exer/formulario?id=${id}`} className="CustomLink" >
+                    <Link to={`/exer/formulario`} className="CustomLink" >
                         Editar ejercicio
                     </Link>
                 </button>
