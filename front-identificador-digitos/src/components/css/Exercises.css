@@ -7,13 +7,27 @@
       align-items: center;
       overflow-y: auto;
       padding-top: 200px;
-      gap: 90px
+    }
+
+    .alta{
+      color: #F3E7E7;
     }
 
     .nuevoEjercicio {
-        width: 250px;
-        min-height: 40px;
-        color: #F3E7E7;
-        background-color: #6e2f5f;
+      width: 250px;
+      min-height: 40px;
+      color: #F3E7E7;
+      background-color: #6e2f5f;
     }
+
+    table, tr{
+      border: 1px solid;
+      width: 80%;
+    }
+
+    .predefined {
+      border: 1px solid;
+      height: 60px;
+    }
+
 }

@@ -16,6 +16,7 @@ export default function App() {
         <Route path="/us" element={<AboutUs/>} />
         <Route path="/exer" element={<Exercises/>} />
         <Route path="/" element={<Landing />} />    
+        <Route path="/skynet" element={<Landing />} />    
       </Routes>
 
     </>

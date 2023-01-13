@@ -3,10 +3,11 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./css/Exercise.css"
 
-const Exercise = ({ text, num, success }) => {
-    console.log("texto recibido en parámetros: " + text);
-    console.log("parametro success: " + success);
-    console.log("parámetro num: " + num);
+const Exercise = (props) => {
+    const ID = props[0];
+    const name = props[1];
+
+    console.log(props[1]);
     //console.log("supuesto id con el valor 0 del arreglo num: " + num[1]);
     //console.log("id luego de obtener el valor 0 del arreglo num:" + id);
     //const id = num[1] // este va a ser el id
@@ -41,7 +42,7 @@ const Exercise = ({ text, num, success }) => {
 //{num[1]}, todo el arreglo num: {num}
     return (
         <tr>
-            <td>texto: {text}, supuesto valor 0: </td> 
+            <td>ID: {ID}, nombre del ejercicio: {name}</td> 
             <td className="derecha">
                 <button
                     className="ver">
@@ -59,6 +60,12 @@ const Exercise = ({ text, num, success }) => {
                     className="eliminar"
                     onClick={handleClickEliminar}>
                     Eliminar ejercicio
+                </button>
+                <button 
+                    className="probar">
+                    <Link to={`/ejercicio?id={id}`} className="link">
+                        Probar ejercicio
+                    </Link>
                 </button>
             </td>
         </tr>

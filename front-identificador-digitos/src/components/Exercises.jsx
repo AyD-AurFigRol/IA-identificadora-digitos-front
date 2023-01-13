@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Exercise from "./Exercise";
+import { Button, Container, Table, Alert } from "react-bootstrap";
 import "./css/Exercises.css"
 
 class Exercises extends React.Component { 
@@ -52,25 +53,28 @@ class Exercises extends React.Component {
                             : null
                     }
                     <button className="nuevoEjercicio" style={{ margin: "12px"}}>
-                        <Link to="/alta">Añadir nuevo ejercicio</Link>
+                        <Link className="alta" to="/alta">Añadir nuevo ejercicio</Link>
                     </button>
 
-                    <table striped bordered >
+                    <Table striped bordered>
                         <thead>
                             <tr>
-                                <th>Ejercicio</th>
-                                <th>Acciones</th>
+                                <th className = "predefined">Ejercicio</th>
+                                <th className = "predefined">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             {                                
                                 data.map(ejercicio => {
-                                    return <Exercise {...ejercicio.num} />
+                                    console.log("Obtenido en ejercicios.num: " + ejercicio.num);
+                                    console.log("Obtenido en ejercicios: " + ejercicio);
+                                    const num = ejercicio.num;
+                                    console.log(num);
+                                    return <Exercise {...num} />
                                 })
                             }
-
                         </tbody>
-                    </table>
+                    </Table>
                 </div>
             </>
         )

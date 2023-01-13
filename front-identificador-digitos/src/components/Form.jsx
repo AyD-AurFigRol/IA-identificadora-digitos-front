@@ -4,10 +4,8 @@ import Exercises from "./Exercises"
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-
 class Form extends React.Component {
 
-    
     state = {
         val: false
     }
