@@ -3,11 +3,13 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./css/Exercise.css"
 
-const Exercise = ({ num, text }) => {
-
-    const id = num[0] // este va a ser el id
-    console.log(id);
-    console.log(num[0]);
+const Exercise = ({ text, num, success }) => {
+    console.log("texto recibido en parámetros: " + text);
+    console.log("parametro success: " + success);
+    console.log("parámetro num: " + num);
+    //console.log("supuesto id con el valor 0 del arreglo num: " + num[1]);
+    //console.log("id luego de obtener el valor 0 del arreglo num:" + id);
+    //const id = num[1] // este va a ser el id
 
     const handleClickEliminar = (event) => {
         //Eliminar
@@ -36,9 +38,10 @@ const Exercise = ({ num, text }) => {
         });
     }
 //, nombre: {num[3]} eso irá en el td cuando se arregle lo de consulta general
+//{num[1]}, todo el arreglo num: {num}
     return (
         <tr>
-            <td>{text} , {num[0]}, {num}</td> 
+            <td>texto: {text}, supuesto valor 0: </td> 
             <td className="derecha">
                 <button
                     className="ver">

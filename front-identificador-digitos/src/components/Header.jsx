@@ -14,6 +14,7 @@ export default function Header() {
                     <div className="Header-text"><Link to={`/us`}>About us</Link></div>
                     <div className="Header-text"> <Link to={`/login`}>Sign in</Link></div>
                     <div className="Header-btn"> <Link to={`/register`}> Sign up</Link></div>
+                    <div className="Header-CS"> <Link to={`/`}> Cerrar sesión</Link></div>
                 </div>
             </header>
         </>

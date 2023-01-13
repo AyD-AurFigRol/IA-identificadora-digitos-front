@@ -15,8 +15,8 @@ class Exercises extends React.Component {
 
     componentDidMount() {
         const datos = {
-            "numero": "1",
-            "opcion": "2"
+            "opcion": "2",
+            "numero": "1"
         }
 
         axios.post(
@@ -28,9 +28,9 @@ class Exercises extends React.Component {
                 }
             }
         ).then(response => {
+            console.log("respuesta obtenida: " + response.data);
             this.setState({ data: [response.data] });
-            console.log(response.data);
-            console.log(this.state.data);
+            console.log("poniendo respuesta obtenida en el estado: " + this.state.data);
         }).catch(error => {
             console.info(error);
             this.setState({ showAlert: true, alertText: "ERROR EN LA OBTENCION DE DATOS" });
@@ -64,11 +64,11 @@ class Exercises extends React.Component {
                         </thead>
                         <tbody>
                             {                                
-                                data.map(ejercicio => {  /*data es un arreglo y map es una funcion para recorrer el arreglo*/
-                                    console.log(ejercicio);
-                                    return <Exercise {...ejercicio} />
+                                data.map(ejercicio => {
+                                    return <Exercise {...ejercicio.num} />
                                 })
                             }
+
                         </tbody>
                     </table>
                 </div>
