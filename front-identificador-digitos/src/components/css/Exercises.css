@@ -6,7 +6,20 @@
       background: linear-gradient(to bottom, #4391b6, #70afce, #a5def1);
       align-items: center;
       overflow-y: auto;
-      padding-top: 200px;
+      padding-top: 5px;
+    }
+
+    h1 {
+      padding-top: 50px;
+      height: fit-content;
+    }
+
+    .alerta {
+      height: 50px;
+    }
+
+    button {
+      margin-right: 20px;
     }
 
     .alta{
@@ -20,14 +33,18 @@
       background-color: #6e2f5f;
     }
 
-    table, tr{
+    table{
       border: 1px solid;
-      width: 80%;
+      width: 90%;
     }
 
-    .predefined {
-      border: 1px solid;
-      height: 60px;
+    th {
+      height: 90px;
+    }
+
+    td {
+      text-align: center;
+      gap: 30px;
     }
 
 }

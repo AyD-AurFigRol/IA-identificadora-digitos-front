@@ -18,7 +18,7 @@ class Form extends React.Component {
     }
 
     validar = (usuario, password) => {
-        var datos = {
+        const datos = {
             User: usuario,
             pass: password
         }

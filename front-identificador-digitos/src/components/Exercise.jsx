@@ -6,11 +6,10 @@ import "./css/Exercise.css"
 const Exercise = (props) => {
     const ID = props[0];
     const name = props[1];
-
+    
     console.log(props[1]);
-    //console.log("supuesto id con el valor 0 del arreglo num: " + num[1]);
-    //console.log("id luego de obtener el valor 0 del arreglo num:" + id);
-    //const id = num[1] // este va a ser el id
+    console.log(props[2]);
+    console.log(props[3]);
 
     const handleClickEliminar = (event) => {
         //Eliminar
@@ -36,7 +35,7 @@ const Exercise = (props) => {
         }).finally(() => {
             window.location.href = "/exer";
             //<Navigate to= "/exer"/>
-        });
+        }); 
     }
 //, nombre: {num[3]} eso irá en el td cuando se arregle lo de consulta general
 //{num[1]}, todo el arreglo num: {num}
@@ -46,13 +45,13 @@ const Exercise = (props) => {
             <td className="derecha">
                 <button
                     className="ver">
-                    <Link to={`/exer/info`} className="link" >
+                    <Link to={`/exer/info?id=${id}`} className="link" >
                         Ver ejercicio
                     </Link>
                 </button>
                 <button 
                     className="editar">
-                    <Link to={`/exer/formulario`} className="link">
+                    <Link to={`/exer/formulario?id=${id}`} className="link">
                         Editar ejercicio
                     </Link>
                 </button>
@@ -63,7 +62,7 @@ const Exercise = (props) => {
                 </button>
                 <button 
                     className="probar">
-                    <Link to={`/ejercicio?id={id}`} className="link">
+                    <Link to={`/ejercicio?id=${id}`} className="link">
                         Probar ejercicio
                     </Link>
                 </button>

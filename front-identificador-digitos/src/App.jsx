@@ -6,15 +6,20 @@ import Login from './components/Login';
 import Register from './components/Register';
 import AboutUs from './components/AboutUs';
 import Exercises from './components/Exercises';
+import Info from './components/Info';
+import Alta from './components/Alta';
+
 
 export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/us" element={<AboutUs/>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/us" element={<AboutUs />} />
         <Route path="/exer" element={<Exercises/>} />
+        <Route path="/alta" element={<Alta />} />
+        <Route path="/info" element={<Info />} />
         <Route path="/" element={<Landing />} />    
         <Route path="/skynet" element={<Landing />} />    
       </Routes>

@@ -36,4 +36,10 @@
         margin-left: 50px;
         gap: 20px;
     }
+
+    td {
+        border: solid 1px;
+        height: min-content;
+
+    }
 }
