@@ -35,16 +35,34 @@
 
     table{
       border: 1px solid;
-      width: 90%;
+      width: max-content;
+      height: max-content;
     }
 
-    th {
+    th, tr, thead {
       height: 90px;
     }
 
-    td {
-      text-align: center;
-      gap: 30px;
+    tbody {      
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
 
+    tr {
+      display: flex;
+      flex-direction: row;
+      margin: 0 15px 0 15px;
+    }
+
+    .cabecera {
+      border: none;
+    }
+
+    .predefined {
+      padding-top: 25px;
+      width: 45%;
+      align-items: center;
+      text-align: center;
+    }
 }

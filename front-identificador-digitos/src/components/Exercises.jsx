@@ -15,9 +15,9 @@ class Exercises extends React.Component {
 
   componentDidMount() {
     const datos = {
-      "numero": "1",
+      //"numero": "1",
       "opcion": "5",
-      "nombre": "uno",
+      //"nombre": "uno",
       //"id": "7",
     };
 
@@ -28,19 +28,20 @@ class Exercises extends React.Component {
         },
       })
       .then((response) => {
+        console.log("Respuesta");
         console.log(response);
-        console.log(response.text);
+        console.log("texto");
+        console.log(response.data.text);
+        console.log("Respuesta de datos response.data");
         console.log(response.data);
-        response.data.success
-          ? console.log(response) &
-            console.log("respuesta obtenida: " + response.data) &
-            console.log(response.data) &
+        console.log("Respuesta de datos en arreglo data.num");
+        console.log(response.data.num);
+        response.data.success ?
             this.setState({
-              data: [response.data],
+              data: response.data.num
             }) &
-            console.log(
-              "poniendo respuesta obtenida en el estado: " + this.state.data
-            ) &
+            console.log("Mostrando el arreglo num: " ) &
+            console.log(this.state.data) &
             this.setState({
               showAlert: true,
               alertText: "Mostrando los ejercicios obtenidos",
@@ -61,6 +62,10 @@ class Exercises extends React.Component {
 
   render() {
     const { data, showAlert, alertText } = this.state;
+    console.log("Esto es lo que tiene data");
+    console.log(data);
+
+    
     return (
       <>
         <Header />
@@ -79,19 +84,17 @@ class Exercises extends React.Component {
 
           <Table striped bordered>
             <thead>
-              <tr>
+              <tr className="cabecera">
                 <th className="predefined">Ejercicio</th>
                 <th className="predefined">Acciones</th>
               </tr>
             </thead>
             <tbody>
-              {data.map((ejercicio) => {
-                console.log("Obtenido en ejercicios.num: " + ejercicio.num);
-                console.log("Obtenido en ejercicios: " + ejercicio);
-                const num = ejercicio.num;
-                console.log(num);
-                return <Exercise {...num} />;
-              })}
+                  {
+                  this.state.data.map((ejercicio) => (
+                    <Exercise key={ejercicio.num} {...ejercicio} />
+                  ))
+                  }
             </tbody>
           </Table>
         </div>
@@ -101,3 +104,14 @@ class Exercises extends React.Component {
 }
 
 export default Exercises;
+
+/* 
+{data.map(ejercicio => {
+  console.log("Obtenido en ejercicios.num: " + ejercicio.num);
+  console.log("Obtenido en ejercicios: " + ejercicio);
+  const id = ejercicio.num[0];
+  console.log(ejercicio.num);
+  return <Exercise key={ejercicio.num} {...ejercicio.num} />;
+})}
+
+*/

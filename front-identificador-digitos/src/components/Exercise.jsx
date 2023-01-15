@@ -3,18 +3,17 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./css/Exercise.css"
 
-const Exercise = (props) => {
-    const ID = props[0];
-    const name = props[1];
-    
-    console.log(props[1]);
-    console.log(props[2]);
-    console.log(props[3]);
+const Exercise = ({ id, nombre }) => {
+    //console.log("Entramos a cada ejercicio");
+    //console.log(props);  
+    //console.log(props[0]);
+    console.log(nombre);
+    console.log(id);
 
     const handleClickEliminar = (event) => {
         //Eliminar
         const datos = {
-            "numero": {id},
+            "id": id,
             "opcion": "3"
         }
 
@@ -25,13 +24,13 @@ const Exercise = (props) => {
         }).then(response => {
             console.info(response.data);
             if (response.data.message) {
-                alert(response.data.message);
+                alert(response.data.text);
             } else {
-                alert(response.data.error);
+                alert(response.data.text);
             }
         }).catch(error => {
             console.info(error);
-            alert(response.data.message);
+            alert(response.data.text);
         }).finally(() => {
             window.location.href = "/exer";
             //<Navigate to= "/exer"/>
@@ -41,11 +40,11 @@ const Exercise = (props) => {
 //{num[1]}, todo el arreglo num: {num}
     return (
         <tr>
-            <td>ID: {ID}, nombre del ejercicio: {name}</td> 
+            <td className = "datos">ID: {id}      nombre del ejercicio: {nombre}</td> 
             <td className="derecha">
                 <button
                     className="ver">
-                    <Link to={`/exer/info?id=${id}`} className="link" >
+                    <Link to={`/exer/info?id=${id}&name=${nombre}`} className="link" >
                         Ver ejercicio
                     </Link>
                 </button>

@@ -23,8 +23,8 @@ class Alta extends React.Component {
         console.log(nombre);
         const datos = {
             "opcion": "1",
-            //"nombre": nombre,
-            "numero": "1",
+            "nombre": nombre,
+            //"numero": "1",
             //"id": "52"
         }
         console.log(datos);
@@ -32,15 +32,17 @@ class Alta extends React.Component {
             headers: {
                 'Content-type': 'application/json'
             }
-        }).then(resultado => {
-            if (resultado.success) {
+        }).then(response => {
+            console.log(response);
+            if (response.data.success) {
                 this.state.val = true;
-                console.log(resultado.text);
-                this.forceUpdate();
+                console.log(response.data.text);
+                alert("Se registró el ejercicio correctamente");
+                $("#Name").val("");
+
             } else {
                 alert("No se registró el ejercicio");
-                console.log(resultado);
-                $("#Name").val("");
+                console.log(response);
             }         
         })
     }
@@ -64,6 +66,9 @@ class Alta extends React.Component {
                     {esValido}
                     {console.log(esValido)}
                 </div>
+                <button variant="secondary" onClick={() => window.location.href = "/exer" }>
+                        Regresar
+                    </button>
             </>
         )
     }

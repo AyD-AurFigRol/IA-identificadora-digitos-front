@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container } from "react-bootstrap";
 import axios from "axios";
 import Header from "./Header";
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 class Info extends React.Component {
 
@@ -10,18 +10,28 @@ class Info extends React.Component {
         data: [],        
         showAlert: false,
         alertText: "",
+        id: "",
+        nombre: "",
 
     }
 
     componentDidMount() {
-        const ID = new URLSearchParams(window.location.search).get("id");
+        const idP = new URLSearchParams(window.location.search).get("id");
+        const nombreP = new URLSearchParams(window.location.search).get("name");
+        //const { id } = useParams();
+        console.log("ID: ");
+        console.log(idP);
+        console.log("nombre: ");
+        console.log(nombreP);
+        this.setState({ id: idP }) ;
+        this.setState({ nombre: nombreP });
+        console.log(this.state.id);
+        console.log(this.state.nombre);
         const datos = {
-            "id": {ID},
+            "id": idP,
             "opcion": "2",
-            "numero": "1",
-            "nombre": "uno",
         }
-        if(ID) {
+        if(idP) {
             axios.post(`/skynet/api/ejercicios`, datos,  {
                 headers: {
                     'Content-type': 'application/json'
@@ -48,7 +58,7 @@ class Info extends React.Component {
     }
 
     render() {
-        const { data, showAlert, alertText } = this.state;
+        const { data, showAlert, alertText, id, nombre } = this.state;
         //const info = data.num;
         return (
             <>
@@ -61,14 +71,14 @@ class Info extends React.Component {
                                 </alert>
                             ) : null
                         }
-                    <p>Nombre del ejercicio: </p>
-                    <p>ID del ejercicio: </p>
+                    <p>Nombre del ejercicio: {nombre}</p>
+                    <p>ID del ejercicio: {id} </p>
                     <p>Veces que se ha ingresado cada dígito: </p>
                            
-                    
                     <button variant="secondary" onClick={() => window.location.href = "/exer" }>
                         Regresar
                     </button>
+                    
                 </Container>
             </>
         )
