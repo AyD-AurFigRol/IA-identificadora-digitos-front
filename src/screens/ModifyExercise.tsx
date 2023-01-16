@@ -28,13 +28,35 @@ interface IResult {
 const ModifyExercise = () => {
     const { id } = useParams();
     const [exer, SetExer] = useState(new Exercise);
+    const [counts, SetCounts] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    const [name, SetName] = useState("");
     const navigate = useNavigate();
+
+    const UpdateCounts = (index: number, newValue: number) =>
+    {
+        let cnts = counts;
+        cnts[index] = newValue;
+        SetCounts(cnts); 
+    }
 
     useEffect(() => {
         // Obtenemos los datos de la base de datos
         $.post("/skynet/api/servletExercises", { id: id, opcion: 2 }, (resultado: IResult) => {
             if (resultado.success) {
                 SetExer(resultado.num);
+                SetCounts([
+                    resultado.num[2],
+                    resultado.num[3],
+                    resultado.num[4],
+                    resultado.num[5],
+                    resultado.num[6],
+                    resultado.num[7],
+                    resultado.num[8],
+                    resultado.num[9],
+                    resultado.num[10],
+                    resultado.num[11],
+                ]);
+                SetName(resultado.num[1]);
             } else {
                 alert("Hubo un error al obtener los ejercicios");
             }
@@ -53,7 +75,15 @@ const ModifyExercise = () => {
                 <div className="bg-yellow-400 mx-auto p-10 w-4/5 h-80 flex flex-col justify-around rounded-3xl">
                     <div className="flex flex-row justify-around">
                         <label htmlFor="User" className='block text-left'>Nombre del ejercicio</label>
-                        <input required name="User" id="User" type="text" placeholder="Nombre del ejercicio" className='block text-left p-0.5 rounded-md' onChange={(event) => { }} />
+                        <input
+                            required
+                            name="User"
+                            id="User"
+                            type="text"
+                            placeholder="Nombre del ejercicio"
+                            className='block text-left p-0.5 rounded-md'
+                            onChange={(event) => { SetName(event.target.value) }}
+                            value={name} />
                     </div>
 
                     <div className="flex flex-col">
@@ -66,7 +96,18 @@ const ModifyExercise = () => {
                                                 return (
                                                     <>
                                                         <label htmlFor="pass" className='block text-left mr-1'>{e}:</label>
-                                                        <input required type="number" placeholder="No." className='text-left p-0.5 w-10 rounded-md mr-3' onChange={(event) => { }} />
+                                                        <input
+                                                            required
+                                                            type="number"
+                                                            placeholder="No."
+                                                            className='
+                                                                text-left 
+                                                                p-0.5 w-10 
+                                                                rounded-md mr-3
+                                                            '
+                                                            onChange={(event) => {UpdateCounts(e, parseInt(event.target.value))}}
+                                                            value={counts[e]}
+                                                        />
                                                     </>
                                                 )
                                             })}
