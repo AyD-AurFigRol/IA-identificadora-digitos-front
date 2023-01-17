@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import $ from "jquery"
+import Swal from 'sweetalert2';
 
-export default function Login() {
+export default function Login({SetAuth}) {
 
     const navigate = useNavigate();
     const [user, setUser] = useState("");
@@ -17,11 +18,19 @@ export default function Login() {
         $.post("/skynet/api/servletLogin", datos, (resultado) => {
             if (resultado.success) {
                 localStorage.setItem('auth', user);
+                SetAuth(true);
+                Swal.fire(
+                    'Sesión iniciada',
+                    'Se ha encontrado el usuario',
+                    'success'
+                );
                 navigate("/exercises");
             } else {
-                alert("Usuario no registrado");
-                $("#Name").val("");
-                $("#pass").val("");
+                Swal.fire(
+                    'Error',
+                    'No se encontró el usuario o hubo un error: ' + resultado.text,
+                    'error'
+                );
             }         
         })
     }

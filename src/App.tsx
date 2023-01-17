@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { SnackbarProvider } from 'notistack';
-import { AppConfig } from './app.config';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Landing from './screens/Landing';
@@ -12,13 +10,20 @@ import ModifyExercise from './screens/ModifyExercise';
 import ViewExercise from './screens/ViewExercise';
 
 export default function App() {
+
+    const [auth, SetAuth] = useState(false);
+
+    useEffect(() => {
+        SetAuth(localStorage.getItem("auth") != null)
+    }, []);
+
     return (
         <div className='flex flex-col'>
-            <Header />
+            <Header auth={auth} SetAuth={SetAuth}/>
             <div className='h-full'>
             <Routes>
                 <Route path="/" element={<Landing />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login SetAuth={SetAuth}/>} />
                 <Route path="/exercises" element={<Exercises />} />
                 <Route path="/exercises/view/:id" element={<ViewExercise />} />
                 <Route path="/exercises/test/:id" element={<TestExercise />} />

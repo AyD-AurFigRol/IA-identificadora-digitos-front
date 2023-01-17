@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Chart from "../components/Chart";
 import { useNavigate, useParams } from "react-router-dom";
-import Grid from "../components/Grid";
+import Swal from "sweetalert2";
 import $ from "jquery";
+import { Link } from "react-router-dom";
 
 class Exercise {
     Id: number;
@@ -32,11 +33,10 @@ const ModifyExercise = () => {
     const [name, SetName] = useState("");
     const navigate = useNavigate();
 
-    const UpdateCounts = (index: number, newValue: number) =>
-    {
+    const UpdateCounts = (index: number, newValue: number) => {
         let cnts = counts.concat();
         cnts[index] = newValue;
-        SetCounts(cnts); 
+        SetCounts(cnts);
     }
 
     const UpdateExercise = (e: any) => {
@@ -58,13 +58,40 @@ const ModifyExercise = () => {
         };
         $.post("/skynet/api/servletExercises", data, (resultado: IResult) => {
             if (resultado.success) {
-                console.log("Ejercicio editado");
+                Swal.fire(
+                    'Guardado',
+                    'Ejercicio modificado con éxito',
+                    'success'
+                );
                 navigate("/exercises");
             } else {
-                alert("Hubo un error al obtener los ejercicios");
+                Swal.fire(
+                    'Error',
+                    'Ocurrió algo al obtener los ejercicios: ' + resultado.text,
+                    'error'
+                );
             }
         })
     }
+
+    const ConfirmateExit = (e: any) => {
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Quieres salir sin guardar los cambios?',
+            showDenyButton: true,
+            confirmButtonText: 'Aceptar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed)
+                navigate("/exercises");
+        })
+    }
+
+    useEffect(() => {
+        if (!localStorage.getItem('auth'))
+            navigate("/login");
+    });
 
     useEffect(() => {
         // Obtenemos los datos de la base de datos
@@ -104,11 +131,17 @@ const ModifyExercise = () => {
                         <label htmlFor="User" className='block text-left'>Nombre del ejercicio</label>
                         <input
                             required
-                            name="User"
-                            id="User"
+                            name="Name"
+                            id="Name"
                             type="text"
                             placeholder="Nombre del ejercicio"
-                            className='block text-left p-0.5 rounded-md'
+                            className='
+                                block
+                                text-left
+                                p-0.5
+                                rounded-md
+                                md:w-1/2
+                            '
                             onChange={(event) => { SetName(event.target.value) }}
                             value={name} />
                     </div>
@@ -132,7 +165,7 @@ const ModifyExercise = () => {
                                                                 p-0.5 w-10 
                                                                 rounded-md mr-3
                                                             '
-                                                            onChange={(event) => {UpdateCounts(e, parseInt(event.target.value))}}
+                                                            onChange={(event) => { UpdateCounts(e, parseInt(event.target.value)) }}
                                                             value={counts[e]}
                                                         />
                                                     </>
@@ -145,11 +178,37 @@ const ModifyExercise = () => {
                         </div>
                     </div>
 
-                    <input
-                        className="bg-blue-800 text-white w-full py-1 rounded-md font-medium"
-                        type="submit"
-                        value="Enviar"
-                    />
+                    <div className="flex md:flex-row flex-col-reverse">
+                        <button
+                            className="
+                                bg-red-800
+                                text-white
+                                w-full
+                                py-1
+                                rounded-md
+                                font-medium
+                                md:mx-3
+                                my-1
+                            "
+                            onClick={(e) => { ConfirmateExit(e) }}
+                        >
+                            Cancelar
+                        </button>
+                        <input
+                            className="
+                                bg-green-800
+                                text-white
+                                w-full
+                                py-1
+                                rounded-md
+                                font-medium
+                                md:mx-3
+                                my-1
+                            "
+                            type="submit"
+                            value="Enviar"
+                        />
+                    </div>
                 </div>
             </form >
         </div >

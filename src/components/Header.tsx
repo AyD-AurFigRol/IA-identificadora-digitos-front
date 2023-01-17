@@ -1,33 +1,15 @@
-import { IconButton } from "@mui/material";
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ auth, SetAuth }) {
+
+    const navigate = useNavigate();
 
     const logOut = () => {
         localStorage.removeItem('auth');
-        window.location.reload();
+        SetAuth(false);
+        navigate("/login");
     };
-
-    const authMenu = () => {
-        if (localStorage.getItem('auth'))
-            return (
-                <>
-                    <Link className="text-md p-2 hover:opacity-60 hover:cursor-pointer hover:bg-gray-300" to="/exercises">
-                        Ejercicios
-                    </Link>
-                    <button onClick={() => logOut()} className="text-md p-2 hover:opacity-60 hover:cursor-pointer hover:bg-gray-300">
-                        Cerrar sesión
-                    </button>
-                </>
-            )
-        else
-            return (
-                    <Link className="text-md p-2 hover:opacity-60 hover:cursor-pointer hover:bg-gray-300" to="/login">
-                        Iniciar sesión
-                    </Link>
-            )
-    }
 
     return (
         <header className="w-full border-b border-b-gray-300 p-4">
@@ -39,7 +21,21 @@ export default function Header() {
                     <Link className="text-md p-2 hover:opacity-80 hover:cursor-pointer  hover:bg-gray-300" to="/">
                         Inicio
                     </Link>
-                    {authMenu()}
+                    {
+                        auth ?
+                            <>
+                                <Link className="text-md p-2 hover:opacity-60 hover:cursor-pointer hover:bg-gray-300" to="/exercises">
+                                    Ejercicios
+                                </Link>
+                                <button onClick={() => logOut()} className="text-md p-2 hover:opacity-60 hover:cursor-pointer hover:bg-gray-300">
+                                    Cerrar sesión
+                                </button>
+                            </>
+                            :
+                            <Link className="text-md p-2 hover:opacity-60 hover:cursor-pointer hover:bg-gray-300" to="/login">
+                                Iniciar sesión
+                            </Link>
+                    }
                 </div>
             </nav>
         </header>

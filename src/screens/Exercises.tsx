@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 class IExercises {
     Id: number;
     Nombre: string;
+
+    constructor(id: number, nombre:string){
+        this.Id = id;
+        this.Nombre = nombre
+    }
 }
 
 class IResult {
@@ -24,11 +30,16 @@ const Exercises = () => {
             return;
         }
 
-        $.post("/skynet/api/servletExercises", { nombre: name, opcion: 1 }, (resultado: IResult) => {
+        $.post("/skynet/api/servletExercises", { nombre: name, opcion: 1 }, (resultado) => {
             if (resultado.success) {
-                alert("Ejercicio registrado");
+                Swal.fire(
+                    'Éxito',
+                    'Ejercicio registrado con éxito',
+                    'success'
+                );
+                const newExer = new IExercises(resultado.num[0], name);
+                setExercises(exercises.concat(newExer));
                 setName("");
-                window.location.reload();
             } else {
                 console.log(resultado);
             }
@@ -36,14 +47,36 @@ const Exercises = () => {
     }
 
     const DeleteExercise = (id: number) => {
-        $.post("/skynet/api/servletExercises", { id: id, opcion: 3 }, (resultado: IResult) => {
-            if (resultado.success) {
-                alert("Ejercicio eliminado");
-                window.location.reload();
-            } else {
-                console.log(resultado);
+        Swal.fire({
+            title: '¿Quieres eliminar este ejercicio?',
+            showDenyButton: true,
+            confirmButtonText: 'Aceptar',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.post("/skynet/api/servletExercises", { id: id, opcion: 3 }, (resultado: IResult) => {
+                    if (resultado.success) {
+                        Swal.fire(
+                            'Eliminado',
+                            'Ejercicio eliminado con éxito',
+                            'success'
+                        );
+                        let exers = exercises.concat([]);
+                        setExercises(exers.filter((elem) => elem.Id != id));
+                        
+                    } else {
+                        Swal.fire(
+                            'Error',
+                            'Ocurrió algo al eliminar el ejercicio: ' + resultado.text,
+                            'error'
+                        );
+                    }
+                })
             }
-        })
+        });
+
+        
     }
 
     useEffect(() => {
