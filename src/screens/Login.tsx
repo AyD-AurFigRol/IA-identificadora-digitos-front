@@ -18,7 +18,6 @@ export default function Login() {
             if (resultado.success) {
                 localStorage.setItem('auth', user);
                 navigate("/exercises");
-                window.location.reload()
             } else {
                 alert("Usuario no registrado");
                 $("#Name").val("");
