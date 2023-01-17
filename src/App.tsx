@@ -23,6 +23,7 @@ export default function App() {
             <div className='h-full'>
             <Routes>
                 <Route path="/" element={<Landing />} />
+                <Route path="/skynet" element={<Landing />} />
                 <Route path="/login" element={<Login SetAuth={SetAuth}/>} />
                 <Route path="/exercises" element={<Exercises />} />
                 <Route path="/exercises/view/:id" element={<ViewExercise />} />

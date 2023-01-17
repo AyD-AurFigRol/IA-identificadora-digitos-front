@@ -10,7 +10,8 @@ export const loadNeuralNet = async () => {
         //model = await tf.loadLayersModel('https://raw.githubusercontent.com/rainmaker29/hand-drawn-digits/master/models/tfjs_files/model.json');
         //model = await tf.loadLayersModel('https://raw.githubusercontent.com/jawarn3h/hand-drawn-digits/master/models/tfjs_files/model.json');
         // Cambiar por /login/models/tfjs_files/model.json antes de meterlo al netbeans.
-        model = await tf.loadLayersModel("/model.json");
+        // model = await tf.loadLayersModel("/model.json");
+        model = await tf.loadLayersModel("/skynet/model.json");
         console.log("Modelo cargado");
         // TODO: Hacer desaparecer un loader con esto
     }
@@ -67,7 +68,7 @@ export const parseGrid = (pixels: Pixel[]) => {
 }
 
 export const predict = (r: Array<Array<number>>) => {
-    console.log('Matrix: ', r)
+    // console.log('Matrix: ', r)
     let tensor = tf.tensor(r, [28, 28, 1], 'float32');
     tensor = tf.expandDims(tensor, 0);
     return model!.predict(tensor);

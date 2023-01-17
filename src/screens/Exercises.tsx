@@ -41,7 +41,11 @@ const Exercises = () => {
                 setExercises(exercises.concat(newExer));
                 setName("");
             } else {
-                console.log(resultado);
+                Swal.fire(
+                    'Error',
+                    'Hubo un error al registrar el ejercicio',
+                    'error'
+                );
             }
         })
     }

@@ -37,8 +37,6 @@ const TestExercise = () => {
         $.post("/skynet/api/servletExercises", { id: id, opcion: 2 }, (resultado: IResult) => {
             if (resultado.success) {
                 SetExer(resultado.num);
-                console.log("num: " + resultado.num);
-                console.log("exer: " + exer);
                 SetCounts([
                     resultado.num[2],
                     resultado.num[3],
@@ -51,8 +49,6 @@ const TestExercise = () => {
                     resultado.num[10],
                     resultado.num[11]
                 ]);
-                console.log("Counts: " + Counts);
-
             } else {
                 alert("Hubo un error al obtener los ejercicios");
             }
@@ -67,7 +63,6 @@ const TestExercise = () => {
     const UpdatePreds = (preds: number[]) => {
         SetPreds(preds);
         UpdateCounts(preds.findIndex(e => e == Math.max(...preds)));
-        console.log("Counts updated");
     }
 
     const UpdateCounts = (predicted: number) => {
@@ -102,9 +97,7 @@ const TestExercise = () => {
             Ocho: Counts[8],
             Nueve: Counts[9],
         };
-        console.log(data);
         $.post("/skynet/api/servletExercises", data, (resultado: IResult) => {
-            console.log(resultado);
             if (resultado.success) {
             } else {
                 alert("Hubo un error al obtener los ejercicios");
