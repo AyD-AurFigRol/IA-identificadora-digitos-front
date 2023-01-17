@@ -34,9 +34,36 @@ const ModifyExercise = () => {
 
     const UpdateCounts = (index: number, newValue: number) =>
     {
-        let cnts = counts;
+        let cnts = counts.concat();
         cnts[index] = newValue;
         SetCounts(cnts); 
+    }
+
+    const UpdateExercise = (e: any) => {
+        e.preventDefault();
+        const data = {
+            opcion: 4,
+            id: id,
+            nombre: name,
+            Cero: counts[0],
+            Uno: counts[1],
+            Dos: counts[2],
+            Tres: counts[3],
+            Cuatro: counts[4],
+            Cinco: counts[5],
+            Seis: counts[6],
+            Siete: counts[7],
+            Ocho: counts[8],
+            Nueve: counts[9],
+        };
+        $.post("/skynet/api/servletExercises", data, (resultado: IResult) => {
+            if (resultado.success) {
+                console.log("Ejercicio editado");
+                navigate("/exercises");
+            } else {
+                alert("Hubo un error al obtener los ejercicios");
+            }
+        })
     }
 
     useEffect(() => {
@@ -60,7 +87,7 @@ const ModifyExercise = () => {
             } else {
                 alert("Hubo un error al obtener los ejercicios");
             }
-        })
+        });
     }, []);
 
     useEffect(() => {
@@ -71,7 +98,7 @@ const ModifyExercise = () => {
     return (
         <div className="bg-gradient-to-b from-[#4391b6] via-[#70afce] to-[#a5def1] h-screen text-center flex flex-col justify-center px-1" >
             <h1 className='text-5xl mb-5 font-bold'>{exer[1]}</h1>
-            <form method='POST' onSubmit={(e) => { }}>
+            <form method='POST' onSubmit={(e) => { UpdateExercise(e) }}>
                 <div className="bg-yellow-400 mx-auto p-10 w-4/5 h-80 flex flex-col justify-around rounded-3xl">
                     <div className="flex flex-row justify-around">
                         <label htmlFor="User" className='block text-left'>Nombre del ejercicio</label>
@@ -118,7 +145,11 @@ const ModifyExercise = () => {
                         </div>
                     </div>
 
-                    <input className="bg-blue-800 text-white w-full py-1 rounded-md font-medium" type="submit" value="Enviar" />
+                    <input
+                        className="bg-blue-800 text-white w-full py-1 rounded-md font-medium"
+                        type="submit"
+                        value="Enviar"
+                    />
                 </div>
             </form >
         </div >
