@@ -5,7 +5,7 @@ export default function Footer() {
         <footer className='bg-blue-600 text-white flex flex-col text-center'>
             <div className="border-b-2 text-center">
                 <p><strong>Grupo:</strong> 5CM5</p>
-                <p><strong>Tarea:</strong> Tarea 2 CRUD</p>
+                <p>Proyecto <strong>Skynet</strong></p>
             </div>
             <div className="flex flex-row justify-around">
                 <div>
